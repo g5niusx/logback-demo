@@ -1,0 +1,25 @@
+<configuration>
+    <property name="FILE_PATH" value="/Users/g5niusx/Workspace/logback-demo/log"/>
+    <!--申明一个appender，用来定义是控制台输出还是文件输出，以及输出日志的格式-->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- %msg表示需要输出的内容 -->
+            <!-- %n 表示换行-->
+            <!-- %logger表示输出日志的名称-->
+            <pattern>%d{YYYY-MM-DD HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_APPENDER" class="ch.qos.logback.core.FileAppender">
+        <!--文件输出路径-->
+        <file>${FILE_PATH}/file.log</file>
+        <encoder>
+            <pattern>%d{YYYY-MM-DD HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- level表示需要输出的日志等级,常用的是INFO,DEBUG,ERROR-->
+    <root level="INFO">
+        <appender-ref ref="FILE_APPENDER"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
